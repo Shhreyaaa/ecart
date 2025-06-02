@@ -23,7 +23,7 @@ function Header({insideHome}) {
   return (
     <>
     <Navbar expand="lg" fixed='top' className=" " style={{backgroundColor:'rgb(245,245,245)'}}>
-      <Container fluid>
+      <Container fluid className='me-2 ms-2'>
         <Navbar.Brand href="#"> <i className="fa-solid fa-store"></i> FASHION STORE</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
@@ -38,12 +38,12 @@ function Header({insideHome}) {
           </Nav>
           { insideHome &&
             <Form className="d-flex">
-            <Form.Control type="search" placeholder="Search" className="me-2" aria-label="Search"style={{width:'300px'}} onChange={(e)=>dispatch(searchProducts(e.target.value))}/>
+            <Form.Control type="search" placeholder="Search" className="me-2" aria-label="Search"style={{width:'300px',border:'1px solid rgb(209, 209, 211)',height:'40px'}} onChange={(e)=>dispatch(searchProducts(e.target.value))}/>
             
           </Form>}
 
         <Nav className="ms-auto d-flex align-items-center">
-          <NavLink to="/wishlist"  className='' style={{border:'none',color:'red' , marginRight:'-20px'}}><i className="fa-solid fa-heart" style={{fontSize:'25px'}}></i>
+          <NavLink to="/wishlist"   style={{border:'none',color:'red' }}><i className="fa-solid fa-heart" style={{fontSize:'25px'}}></i>
           <Badge bg="secondary">{userWishlist?.length}</Badge>          
           </NavLink>
           <NavLink to="/cart" style={{border:'none',marginLeft:'20px'}}><i className="fa-solid fa-cart-shopping" style={{fontSize:'25px'}}></i>

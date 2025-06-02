@@ -6,11 +6,18 @@ import { fetchProducts } from '../redux/ecartSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import Spinner from 'react-bootstrap/Spinner';
 import Pagination from '../components/Pagination';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 
 
 
 
 function Home() {
+    useEffect(() => {
+      AOS.init({ duration: 1000, once: true })
+      window.scrollTo(0, 0);
+    }, [])
   // const state=useSelector(state=>state)
   // console.log(state);
 
@@ -52,12 +59,12 @@ function Home() {
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '20px', marginTop: '150px' }}>
           {currentProducts.length > 0 ? (
             currentProducts.map(product => (
-              <Card key={product.id} style={{ width: '18rem', margin: '20px' }}>
+              <Card data-aos="fade-up" key={product.id} style={{ width: '18rem', margin: '20px' }}>
                 <Card.Img variant="top" src={product?.thumbnail} height="300px" />
                 <Card.Body>
                   <Card.Title className="text-black">{product?.title}</Card.Title>
                   {/* {product?.title.slice(0,16)}... */}
-                  <Link to={`/view/${product?.id}`} style={{ textDecoration: 'none', color: 'rgb(128,0,0)', marginLeft: '15px' }}>
+                  <Link to={`/view/${product?.id}`} style={{ textDecoration: 'none', color: 'rgb(128,0,0)'}}>
                     View more
                   </Link>
                 </Card.Body>
